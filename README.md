@@ -1,4 +1,4 @@
-![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/tavofigse/flip-the-react-tomster/blob/master/LICENSE.md)
 
 # Flip the react tomster
 
