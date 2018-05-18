@@ -1,9 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { createStore } from 'redux';
 import { injectGlobal } from 'styled-components';
 import { App } from './components/App';
+import { enthusiasm } from './reducers/index';
 import * as Variables from './styles/variables';
+import { IStoreState } from './types/index';
+
+const store = createStore<IStoreState, any, any, any>(enthusiasm, {
+  enthusiasmLevel: 1,
+  languageName: 'TypeScript',
+});
 
 // tslint:disable-next-line
 injectGlobal`
@@ -31,8 +40,10 @@ injectGlobal`
 `;
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById('root') as HTMLElement
 );
