@@ -2,17 +2,28 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { injectGlobal } from 'styled-components';
 import { App } from './components/App';
 import { enthusiasm } from './reducers/index';
 import * as Variables from './styles/variables';
 import { IStoreState } from './types/index';
 
+// middlewares
+const middlewares = [];
+
+if (process.env.NODE_ENV === `development`) {
+  // tslint:disable-next-line
+  const { logger } = require(`redux-logger`);
+  middlewares.push(logger);
+}
+
+
+// create store
 const store = createStore<IStoreState, any, any, any>(enthusiasm, {
   enthusiasmLevel: 1,
   languageName: 'TypeScript',
-});
+}, applyMiddleware(...middlewares));
 
 // tslint:disable-next-line
 injectGlobal`
