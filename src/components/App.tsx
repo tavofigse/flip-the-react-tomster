@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Hello from '../containers/Hello';
 import { RoutesContainer } from '../routes';
 import * as Variables from '../styles/variables';
 import { Footer, Header } from './home';
@@ -16,7 +15,6 @@ const Container = styled.div`
 export const App: React.StatelessComponent<{}> = () => (
     <Container>
         <Header />
-        <Hello />
         <RoutesContainer />
         <Footer />
     </Container>

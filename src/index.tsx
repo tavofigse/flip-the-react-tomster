@@ -18,7 +18,6 @@ if (process.env.NODE_ENV === `development`) {
   middlewares.push(logger);
 }
 
-
 // create store
 const store = createStore<IStoreState, any, any, any>(enthusiasm, {
   enthusiasmLevel: 1,

@@ -45,3 +45,13 @@ export function textShadowEffect() {
       ${em(.30)} ${em(.30)} 0 ${COLOR_BLACK};
   `;
 }
+
+export const boxShadowEffect = () => `
+  border-radius: ${rem(10)};
+  box-shadow:
+    ${rem(3)} ${rem(3)} 0 ${COLOR_BLACK},
+    ${rem(-1)} ${rem(-1)} 0 ${COLOR_BLACK},
+    ${rem(1)} ${rem(-1)} 0 ${COLOR_BLACK},
+    ${rem(-1)} ${rem(1)} 0 ${COLOR_BLACK},
+    ${rem(1)} ${rem(1)} 0 ${COLOR_BLACK};
+`;
