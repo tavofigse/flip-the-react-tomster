@@ -1,5 +1,4 @@
-[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
-[![npm](https://img.shields.io/npm/l/express.svg)]()
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 # Flip the react tomster
 
