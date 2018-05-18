@@ -1,7 +1,7 @@
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![npm](https://img.shields.io/npm/l/express.svg)]()
 
-# Flip The reactomster
+# Flip the react tomster
 
 Flip cards game featuring Tomster's 100 different faces. A small Ember.js game written originally for the [Ember Montevideo Meetup](https://www.meetup.com/ember-montevideo).
 
