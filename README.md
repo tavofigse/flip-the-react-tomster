@@ -17,10 +17,10 @@ You can propose features and report issues in [Github's issue tracker](https://g
 ## Development
 
 ```sh
-$ git clone https://github.com/tavofigse/flip-the-reactomster.git
-$ cd flip-the-reactomster
-$ npm install
-$ npm start
+$ git clone https://github.com/tavofigse/flip-the-react-tomster.git
+$ cd flip-the-react-tomster
+$ yarn install
+$ yarn start
 ```
 
 And then visit [http://localhost:3000](http://localhost:3000).
