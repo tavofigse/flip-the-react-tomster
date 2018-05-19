@@ -12,10 +12,18 @@ const Container = styled.div`
   min-width: ${Variables.rem(700)};
 `;
 
+const PageContent = styled.div`
+  width: ${Variables.rem(700)};
+  margin: ${Variables.rem(30)} auto 0;
+  font-family: arial;
+`;
+
 export const App: React.StatelessComponent<{}> = () => (
-    <Container>
+    <Container className="Page">
         <Header />
-        <RoutesContainer />
+        <PageContent className="Page-content">
+            <RoutesContainer />
+        </PageContent>
         <Footer />
     </Container>
 );

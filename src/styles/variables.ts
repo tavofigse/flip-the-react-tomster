@@ -11,6 +11,7 @@ export const SIZE_MEDIUM: string = '992px';
 export const SIZE_LARGE: string = '1200px';
 
 // -------------------- VARIABLES -------------------------------
+export const FONT_BASE: string = 'Play';
 export const BROWSER_CONTEXT: number = 19;
 export const FONT_SUBHEADING: string = 'Play';
 export const FONT_FOOTER: string = 'Play';

@@ -26,26 +26,42 @@ const store = createStore<IStoreState, any, any, any>(enthusiasm, {
 
 // tslint:disable-next-line
 injectGlobal`
-  font-size: 10px;
+* {
+  user-select: none;
+}
 
-  html, body {
-    margin: 0;
-  }
+html {
+  font-size: 10px;
 
   @media (min-width: ${Variables.SIZE_EXTRA_SMALL}) {
     font-size: 13px;
   }
 
-  @media (min-width: $size-small) {
+  @media (min-width: ${Variables.SIZE_SMALL}) {
     font-size: 15px;
   }
 
-  @media (min-width: $size-medium) {
+  @media (min-width: ${Variables.SIZE_MEDIUM}) {
     font-size: 17px;
   }
 
-  @media (min-width: $size-large) {
+  @media (min-width: ${Variables.SIZE_LARGE}) {
     font-size: 19px;
+  }
+}
+
+body {
+  font-family: ${Variables.FONT_BASE};
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  -webkit-text-stroke: inherit;
+
+  &:hover {
+    color: inherit;
+  }
 }
 `;
 

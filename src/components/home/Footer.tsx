@@ -31,7 +31,7 @@ const Heart = styled.p`
 `;
 
 export const Footer: React.StatelessComponent<{}> = () => (
-  <FooterContainer>
+  <FooterContainer className="Footer">
     <FooterLabel>Made with</FooterLabel>
     <Heart>❤️</Heart>
   </FooterContainer>

@@ -33,7 +33,7 @@ const Options = styled.ul`
 `;
 
 export const Home: React.StatelessComponent<{}> = () => (
-    <Options>
+    <Options className="Home">
       <li><Link to="play">New Game</Link></li>
       <li><Link to="options">Options</Link></li>
       <li><Link to="credits">Credits</Link></li>

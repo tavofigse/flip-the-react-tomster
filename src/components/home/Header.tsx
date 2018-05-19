@@ -24,12 +24,13 @@ const HeaderTitle = styled.h1`
     font-size: ${Variables.em(80)};
     text-align: center;
     text-decoration: none;
+    margin: 0;
 
     ${Variables.textShadowEffect}
 `;
 
 export const Header: React.StatelessComponent<{}> = () => (
-    <HeaderContainer>
+    <HeaderContainer className="Header">
         <HeaderTitle>
             Flip The Reactomster
         </HeaderTitle>
