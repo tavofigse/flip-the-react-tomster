@@ -52,6 +52,7 @@ html {
 
 body {
   font-family: ${Variables.FONT_BASE};
+  margin: 0 auto;
 }
 
 a {
