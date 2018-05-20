@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Field } from 'redux-form';
 import styled, { css } from 'styled-components';
 import * as Variables from '../../styles/variables';
 
@@ -29,16 +30,23 @@ export const OptionsContainer = styled.div`
 interface IOptionProps {
     imagePath: string;
     selected: boolean;
+    name: string;
+    value: string;
     className?: string;
     children?: React.ReactNode;
 }
 
-const OptionComponent: React.StatelessComponent<IOptionProps> = (props) => (
-    <div className={props.className}>
-      <div className="option-body">
-        {props.children}
-      </div>
-      <img src={props.imagePath} className="options-button-figure" />
+const OptionComponent: React.StatelessComponent<IOptionProps> = (
+  {value, className, imagePath, name, children}
+) => (
+    <div className={className}>
+      <label htmlFor={value}>
+        <div className="option-body">
+          {children}
+        </div>
+        <img src={imagePath} className="options-button-figure" />
+      </label>
+      <Field id={value} name={name} component="input" type="radio" value={value} />
     </div>
 );
 
@@ -51,19 +59,22 @@ export const Option = styled(OptionComponent)`
   background-color: ${Variables.COLOR_WHITE};
   border: ${Variables.rem(4)} solid ${Variables.COLOR_TRANSPARENT};
   ${Variables.boxShadowEffect}
-  cursor: pointer;
   position: relative;
   /* selected */
   :hover {
     border: ${Variables.rem(4)} solid ${Variables.COLOR_AQUA};
   }
   /* image */
+  input {
+    display: none;
+  }
   img {
     border-radius: ${Variables.rem(10)};
     height: 100%;
     padding: ${Variables.em(2)};
     width: 100%;
     line-height: ${Variables.rem(60)};
+    cursor: pointer;
 
   }
   /* props */
@@ -77,6 +88,7 @@ export const Option = styled(OptionComponent)`
       margin: ${Variables.rem(20)} ${Variables.rem(8)};
       position: absolute;
       white-space: nowrap;
+      cursor: pointer;
     }
   `}
 `;
