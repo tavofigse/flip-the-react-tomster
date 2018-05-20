@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import * as Variables from '../../styles/variables';
+import { GoBack } from '../Utils/GoBack';
 import { Option, OptionLabel, OptionsContainer } from './OptionUtils';
 import { Range } from './Range';
 import { Switch } from './Switch';
@@ -71,6 +72,9 @@ export const Options: React.StatelessComponent<{}> = () => (
       <OptionsContainer>
         <Range />
       </OptionsContainer>
+    </Section>
+    <Section>
+      <GoBack />
     </Section>
   </React.Fragment>
 );
