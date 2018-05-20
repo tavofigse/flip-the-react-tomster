@@ -8,7 +8,7 @@ interface ISwitchProps {
 
 export const SwitchComponent: React.StatelessComponent<ISwitchProps> = (props) => (
     <label className={props.className}>
-      <input type="checkbox" id="ember471" className="options-switch-checkbox ember-checkbox ember-view" />
+      <input type="checkbox" className="options-switch-checkbox" />
       <div className="options-switch-slider" />
     </label>
 );

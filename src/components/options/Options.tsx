@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import * as Variables from '../../styles/variables';
 import { Option, OptionLabel, OptionsContainer } from './OptionUtils';
+import { Range } from './Range';
 import { Switch } from './Switch';
 
 const Section = styled.div`
@@ -56,7 +57,19 @@ export const Options: React.StatelessComponent<{}> = () => (
     <Section>
       <OptionLabel>Music Volume</OptionLabel>
       <OptionsContainer>
+        <Range />
+      </OptionsContainer>
+    </Section>
+    <Section>
+      <OptionLabel>Sounds Effects</OptionLabel>
+      <OptionsContainer>
         <Switch />
+      </OptionsContainer>
+    </Section>
+    <Section>
+      <OptionLabel>Effects Volume</OptionLabel>
+      <OptionsContainer>
+        <Range />
       </OptionsContainer>
     </Section>
   </React.Fragment>
