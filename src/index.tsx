@@ -2,12 +2,18 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { reducer as formReducer } from 'redux-form'
 import { injectGlobal } from 'styled-components';
 import { App } from './components/App';
-import { enthusiasm } from './reducers/index';
 import * as Variables from './styles/variables';
-import { IStoreState } from './types/index';
+
+const rootReducer = combineReducers({
+  // ...your other reducers here
+  // you have to pass formReducer under 'form' key,
+  // for custom keys look up the docs for 'getFormState'
+  form: formReducer
+})
 
 // middlewares
 const middlewares = [];
@@ -19,10 +25,10 @@ if (process.env.NODE_ENV === `development`) {
 }
 
 // create store
-const store = createStore<IStoreState, any, any, any>(enthusiasm, {
-  enthusiasmLevel: 1,
-  languageName: 'TypeScript',
-}, applyMiddleware(...middlewares));
+const store = createStore(
+  rootReducer,
+  applyMiddleware(...middlewares)
+);
 
 // tslint:disable-next-line
 injectGlobal`
