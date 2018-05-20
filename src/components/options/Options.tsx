@@ -41,7 +41,7 @@ export const OptionsComponent: React.StatelessComponent<IOptionsProps & Injected
         <OptionLabel>Figure</OptionLabel>
         <OptionsContainer>
           <Option value="tomster" name="character" imagePath="images/tomster14.png" selected={character === "tomster"} />
-          <Option value="dog" name="character" imagePath="images/dog14.png" selected={character === "grid"} />
+          <Option value="dog" name="character" imagePath="images/dog14.png" selected={character === "dog"} />
         </OptionsContainer>
       </Section>
       <Section>
