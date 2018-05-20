@@ -20,8 +20,9 @@ const HeaderContainer = styled.div`
 
 const HeaderTitle = styled.h1`
     color: ${Variables.COLOR_RED};
-    font-family: Lobster, Georgia, Times, serif;;
+    font-family: ${Variables.FONT_PRIMARY};
     font-size: ${Variables.em(80)};
+    font-weight: 100;
     text-align: center;
     text-decoration: none;
     margin: 0;
@@ -32,7 +33,7 @@ const HeaderTitle = styled.h1`
 export const Header: React.StatelessComponent<{}> = () => (
     <HeaderContainer className="Header">
         <HeaderTitle>
-            Flip The Reactomster
+            Flip The React Tomster
         </HeaderTitle>
     </HeaderContainer>
 );

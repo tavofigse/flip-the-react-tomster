@@ -1,7 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import * as Variables from '../../styles/variables';
-import { Option, OptionLabel, OptionsContainer } from './Option-utils';
+import { Option, OptionLabel, OptionsContainer } from './OptionUtils';
+import { Switch } from './Switch';
 
 const Section = styled.div`
   font-size: ${Variables.em(1)};
@@ -44,6 +45,18 @@ export const Options: React.StatelessComponent<{}> = () => (
         <Option imagePath="images/option-grid.png" selected={false}>
           8 x 8
         </Option>
+      </OptionsContainer>
+    </Section>
+    <Section>
+      <OptionLabel>Music</OptionLabel>
+      <OptionsContainer>
+        <Switch />
+      </OptionsContainer>
+    </Section>
+    <Section>
+      <OptionLabel>Music Volume</OptionLabel>
+      <OptionsContainer>
+        <Switch />
       </OptionsContainer>
     </Section>
   </React.Fragment>

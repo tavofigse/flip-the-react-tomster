@@ -12,6 +12,8 @@ export const SIZE_LARGE: string = '1200px';
 
 // -------------------- VARIABLES -------------------------------
 export const FONT_BASE: string = 'Play';
+export const FONT_PRIMARY: string = 'Lobster';
+export const FONT_SECONDARY: string = 'Cedarville Cursive';
 export const BROWSER_CONTEXT: number = 19;
 export const FONT_SUBHEADING: string = 'Play';
 export const FONT_FOOTER: string = 'Play';
