@@ -2,7 +2,7 @@ import * as React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form'
 import styled from 'styled-components';
 import * as Variables from '../../styles/variables';
-import { GoBack } from '../Utils/GoBack';
+import { GoBack } from '../utils/GoBack';
 import { Option, OptionLabel, OptionsContainer } from './OptionUtils';
 import { Range } from './Range';
 import { Switch } from './Switch';
