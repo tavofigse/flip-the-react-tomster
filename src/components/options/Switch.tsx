@@ -1,15 +1,24 @@
 import * as React from 'react';
+import { Field } from 'redux-form';
 import styled from 'styled-components';
 import * as Variables from '../../styles/variables';
 
 interface ISwitchProps {
     className?: string;
+    name: string;
+    value: boolean;
 }
 
-export const SwitchComponent: React.StatelessComponent<ISwitchProps> = (props) => (
-    <label className={props.className}>
-      <input type="checkbox" className="options-switch-checkbox" />
-      <div className="options-switch-slider" />
+export const SwitchComponent: React.StatelessComponent<ISwitchProps> = ({name, className, value}) => (
+    <label className={className}>
+        <Field  id={name} 
+                className="options-switch-checkbox"
+                value={value}
+                name={name}
+                component="input"
+                type="checkbox"
+        />
+        <div className="options-switch-slider" />
     </label>
 );
 

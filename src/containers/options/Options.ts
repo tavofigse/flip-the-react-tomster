@@ -8,14 +8,18 @@ const mapStateToProps: (state: any) => IOptionsProps =
 state => {
     const {
         character,
-        grid
-    } = selector(state, 'character', 'grid')
+        grid,
+        music,
+        sound
+    } = selector(state, 'character', 'grid', 'music', 'sound')
     return {
         initialValues: {
             character: 'tomster',
-            grid: '8'
+            grid: '8',
+            music: true,
+            sound: true
         },
-        options: {character, grid}
+        options: {character, grid, music, sound}
     }
 };
 

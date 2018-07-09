@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form'
 import styled from 'styled-components';
-import * as Variables from '../../styles/variables';
-import { GoBack } from '../utils/GoBack';
+import * as Variables from '../../styles/variables'; import { GoBack } from '../utils/GoBack';
 import { Option, OptionLabel, OptionsContainer } from './OptionUtils';
 import { Range } from './Range';
 import { Switch } from './Switch';
@@ -31,7 +30,7 @@ export interface IOptionsProps {
 }
 
 export const OptionsComponent: React.StatelessComponent<IOptionsProps & InjectedFormProps> = props => {
-  const { options: { character, grid }} = props;
+  const { options: { character, grid, music, sound }} = props;
   return (
     <form onSubmit={props.handleSubmit}>
       <Section>
@@ -61,7 +60,7 @@ export const OptionsComponent: React.StatelessComponent<IOptionsProps & Injected
       <Section>
         <OptionLabel>Music</OptionLabel>
         <OptionsContainer>
-          <Switch />
+          <Switch name="music" value={music}/>
         </OptionsContainer>
       </Section>
       <Section>
@@ -73,7 +72,7 @@ export const OptionsComponent: React.StatelessComponent<IOptionsProps & Injected
       <Section>
         <OptionLabel>Sounds Effects</OptionLabel>
         <OptionsContainer>
-          <Switch />
+          <Switch name="sound" value={sound} />
         </OptionsContainer>
       </Section>
       <Section>
