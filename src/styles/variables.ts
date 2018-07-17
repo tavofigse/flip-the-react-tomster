@@ -1,3 +1,5 @@
+import { figures, range } from "../containers/utils";
+
 // --------------------- COLORS ---------------------------------
 export const COLOR_WHITE: string = '#FFFFFF';
 export const COLOR_TRANSPARENT: string = 'rgba(255, 255, 255, 0)';
@@ -58,3 +60,19 @@ export const boxShadowEffect = () => `
     ${rem(-1)} ${rem(1)} 0 ${COLOR_BLACK},
     ${rem(1)} ${rem(1)} 0 ${COLOR_BLACK};
 `;
+
+export const tomsterFigure = () => {
+  return range(1, figures.tomster).reduce((previousElement, currentElement) => {
+    return previousElement + ` .figure-tomster${currentElement} {
+      background-image: url("../images/tomster${currentElement}.png");
+    }`
+  }, "")
+}
+
+export const dogFigure = () => {
+  return range(1, figures.dog).reduce((previousElement, currentElement) => {
+    return previousElement + ` .figure-dog${currentElement} {
+      background-image: url("../images/dog${currentElement}.png");
+    }`
+  }, "")
+}

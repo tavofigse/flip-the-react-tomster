@@ -8,6 +8,7 @@ import { Card } from './Card';
 export interface IBoardComponentProps {
     className?: string;
     size: string;
+    cards: string[];
 }
 
 export class BoardComponent extends React.Component<IBoardComponentProps> {
@@ -15,19 +16,18 @@ export class BoardComponent extends React.Component<IBoardComponentProps> {
         size: "4"
     };
     public render(): JSX.Element {
-        const {className, size} = this.props;
+        const {className, size, cards} = this.props;
         return  (
             <>
                 <Section className={className}>
-                    <Card figure="tomster" value="3" size={size} />
-                    <Card figure="tomster" value="3" size={size} />
-                    <Card figure="tomster" value="3" size={size} />
-                    <Card figure="tomster" value="3" size={size} />
-                    <Card figure="tomster" value="3" size={size} />
-                    <Card figure="tomster" value="3" size={size} />
-                    <Card figure="tomster" value="3" size={size} />
-                    <Card figure="tomster" value="3" size={size} />
-                    <Card figure="tomster" value="3" size={size} />
+                    {cards.map((value, index) =>
+                        <Card
+                            key={index}
+                            figure="tomster"
+                            value={value}
+                            size={size}
+                        />
+                    )}
                 </Section>
                 <Section>
                     <GoBack />

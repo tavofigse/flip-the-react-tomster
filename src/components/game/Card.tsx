@@ -18,7 +18,7 @@ export class CardComponent extends React.Component<IFlipCardProps> {
         const {className, figure, value, size} = this.props;
         return (
             <div className={`${className} game-board-card-container game-board-size-${size}`}>
-                <div className="flip-card veil animated">
+                <div className="flip-card show animated">
                     <div className="flip-card-cover" />
                     <div className="flip-card-figure">
                         <div className={`figure-${figure}${value}`} />
@@ -30,6 +30,8 @@ export class CardComponent extends React.Component<IFlipCardProps> {
 }
 
 export const Card = styled(CardComponent)`
+${Variables.tomsterFigure()}
+${Variables.dogFigure()}
 .flip-card {
     backface-visibility: hidden;
     border: none;
