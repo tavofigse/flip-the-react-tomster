@@ -1,15 +1,23 @@
 import * as React from "react";
+import { Field } from 'redux-form';
 import styled from "styled-components";
 import * as Variables from "../../styles/variables";
 
 interface IRangeProps {
     className?: string;
+    name: string;
+    value: string;
 }
 
-export const RangeComponent: React.StatelessComponent<IRangeProps> = props => (
-    <div className={props.className}>
-        <input
-            className={props.className}
+export const RangeComponent: React.StatelessComponent<
+IRangeProps
+> = ({className, value, name}) => (
+    <div className={className}>
+        <Field id={name}
+            className={className}
+            component="input"
+            value={value}
+            name={name}
             type="range"
             step="0.1"
             min="0.1"

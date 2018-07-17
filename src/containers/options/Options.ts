@@ -10,16 +10,27 @@ state => {
         character,
         grid,
         music,
-        sound
-    } = selector(state, 'character', 'grid', 'music', 'sound')
+        musicVolume,
+        sound,
+        soundVolume
+    } = selector(state, 
+        'character',
+        'grid', 
+        'music',
+        'musicVolume',
+        'sound',
+        'soundVolume'
+    )
     return {
         initialValues: {
             character: 'tomster',
             grid: '8',
             music: true,
-            sound: true
+            musicVolume: '0.5',
+            sound: true,
+            soundVolume: '0.5'
         },
-        options: {character, grid, music, sound}
+        options: {character, grid, music, musicVolume, sound, soundVolume}
     }
 };
 

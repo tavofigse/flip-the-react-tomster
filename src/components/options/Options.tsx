@@ -30,7 +30,7 @@ export interface IOptionsProps {
 }
 
 export const OptionsComponent: React.StatelessComponent<IOptionsProps & InjectedFormProps> = props => {
-  const { options: { character, grid, music, sound }} = props;
+  const { options: { character, grid, music, musicVolume, sound, soundVolume }} = props;
   return (
     <form onSubmit={props.handleSubmit}>
       <Section>
@@ -66,7 +66,7 @@ export const OptionsComponent: React.StatelessComponent<IOptionsProps & Injected
       <Section>
         <OptionLabel>Music Volume</OptionLabel>
         <OptionsContainer>
-          <Range />
+          <Range name="musicVolume" value={musicVolume}/>
         </OptionsContainer>
       </Section>
       <Section>
@@ -78,7 +78,7 @@ export const OptionsComponent: React.StatelessComponent<IOptionsProps & Injected
       <Section>
         <OptionLabel>Effects Volume</OptionLabel>
         <OptionsContainer>
-          <Range />
+          <Range name="soundVolume" value={soundVolume}/>
         </OptionsContainer>
       </Section>
       <Section>
