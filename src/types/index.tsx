@@ -1,4 +1,11 @@
+import { FormStateMap } from "redux-form";
+
+export interface IGameState {
+    cards: string[];
+    matchs?: [string, string];
+}
+
 export interface IStoreState {
-    languageName: string;
-    enthusiasmLevel: number;
+    form: FormStateMap;
+    game: IGameState;
 }

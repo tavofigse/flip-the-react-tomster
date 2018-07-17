@@ -2,17 +2,20 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { AnyAction, applyMiddleware, combineReducers, createStore } from 'redux';
 import { reducer as formReducer } from 'redux-form'
 import { injectGlobal } from 'styled-components';
 import { App } from './components/App';
+import { gameReducer } from './reducers/game';
 import * as Variables from './styles/variables';
+import { IStoreState } from './types';
 
 const rootReducer = combineReducers({
   // ...your other reducers here
   // you have to pass formReducer under 'form' key,
   // for custom keys look up the docs for 'getFormState'
-  form: formReducer
+  form: formReducer,
+  game: gameReducer
 })
 
 // middlewares
@@ -25,8 +28,13 @@ if (process.env.NODE_ENV === `development`) {
 }
 
 // create store
-const store = createStore(
+const store = createStore<IStoreState, AnyAction, any, any>(
   rootReducer,
+  {
+    game: {
+      cards: [],
+    }
+  },
   applyMiddleware(...middlewares)
 );
 
