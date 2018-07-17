@@ -9,6 +9,7 @@ export interface IBoardComponentProps {
     className?: string;
     size: string;
     cards: string[];
+    figure: string;
 }
 
 export class BoardComponent extends React.Component<IBoardComponentProps> {
@@ -16,14 +17,15 @@ export class BoardComponent extends React.Component<IBoardComponentProps> {
         size: "4"
     };
     public render(): JSX.Element {
-        const {className, size, cards} = this.props;
+        const {className, size, cards, figure} = this.props;
+        debugger;
         return  (
             <>
                 <Section className={className}>
                     {cards.map((value, index) =>
                         <Card
                             key={index}
-                            figure="tomster"
+                            figure={figure}
                             value={value}
                             size={size}
                         />

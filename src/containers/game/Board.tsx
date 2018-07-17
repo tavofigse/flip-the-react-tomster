@@ -17,7 +17,8 @@ function genereateCards(size: number, figure: string = "tomster"): string[] {
 
 const mapStateToProps: (state: any) => IBoardComponentProps =
 state => ({
-    cards: genereateCards(Number(selector(state, 'grid')) || 4, selector(state, 'figure')),
+    cards: genereateCards(Number(selector(state, 'grid')) || 4, selector(state, 'character')),
+    figure: selector(state, 'character'),
     size: selector(state, 'grid')
 })
 
