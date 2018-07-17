@@ -9,15 +9,28 @@ export interface IFlipCardProps {
     className?: string;
 }
 
-export class CardComponent extends React.Component<IFlipCardProps> {
+export interface IFlipCardState {
+    show: boolean;
+}
+
+export class CardComponent extends React.Component<IFlipCardProps, IFlipCardState> {
     public static defaultProps: Partial<IFlipCardProps> = {
         figure: "tomster",
     };
+    constructor(props: IFlipCardProps) {
+        super(props);
+        this.state = {
+            show: false
+        }
+    }
     public render(): JSX.Element {
         const {className, figure, value, size} = this.props;
+        const {show} = this.state;
         return (
-            <div className={`${className} game-board-card-container game-board-size-${size}`}>
-                <div className="flip-card show animated">
+            <div onClick={this.handleChange} 
+                 className={`${className} game-board-card-container game-board-size-${size}`}
+            >
+                <div className={`flip-card ${show ? "show": "veil"} animated`}>
                     <div className="flip-card-cover" />
                     <div className="flip-card-figure">
                         <div className={`figure-${figure}${value}`} />
@@ -26,11 +39,21 @@ export class CardComponent extends React.Component<IFlipCardProps> {
             </div>
         );
     }
+    private handleChange: (e: React.MouseEvent<HTMLDivElement>) => void =
+    (e) => {
+        console.log("ADASDASDSD");
+        this.setState({
+            show: !this.state.show
+        })
+    }
 }
 
 export const Card = styled(CardComponent)`
+cursor: pointer;
+
 ${Variables.tomsterFigure()}
 ${Variables.dogFigure()}
+
 .flip-card {
     backface-visibility: hidden;
     border: none;
