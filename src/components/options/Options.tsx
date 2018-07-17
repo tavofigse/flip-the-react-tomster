@@ -1,29 +1,12 @@
 import * as React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form'
-import styled from 'styled-components';
-import * as Variables from '../../styles/variables'; import { GoBack } from '../utils/GoBack';
+import { Section, SectionTitle } from '../layout/Section';
+import { GoBack } from '../utils/GoBack';
 import { Option, OptionLabel, OptionsContainer } from './OptionUtils';
 import { Range } from './Range';
 import { Switch } from './Switch';
 
 export const FORM_NAME = 'options';
-
-const Section = styled.div`
-  font-size: ${Variables.em(1)};
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: ${Variables.rem(30)};
-`;
-
-const SectionTitle = styled.div`
-    ${Variables.headingFont(55)}
-    ${Variables.textShadowEffect()}
-    text-align: center;
-    flex: 1 1 auto;
-    text-transform: smallcaps;
-`;
 
 export interface IOptionsProps {
   options: any;

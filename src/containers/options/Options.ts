@@ -15,7 +15,7 @@ state => {
         soundVolume
     } = selector(state, 
         'character',
-        'grid', 
+        'grid',
         'music',
         'musicVolume',
         'sound',
