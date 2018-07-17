@@ -7,11 +7,12 @@ import { figures, range, shuffle } from '../utils';
 const selector = formValueSelector(FORM_NAME);
   
 function genereateCards(size: number, figure: string = "tomster"): string[] {
-    const amountOfCards = size * size;
+    const amountOfCards = size * size / 2;
     const amountOFFigures = figures[figure];
-    return shuffle(range(1, amountOFFigures))
+    const cards = shuffle(range(1, amountOFFigures))
         .slice(0, amountOfCards)
         .map(n => String(n));
+    return [...cards].concat(cards);
 }
 
 const mapStateToProps: (state: any) => IBoardComponentProps =
