@@ -10,6 +10,10 @@ export interface IFlipCardProps {
 }
 
 export class CardComponent extends React.Component<IFlipCardProps> {
+    public static defaultProps: Partial<IFlipCardProps> = {
+        figure: "tomster",
+        size: "4"
+    };
     public render(): JSX.Element {
         const {className, figure, value, size} = this.props;
         return (

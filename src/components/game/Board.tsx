@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import * as Variables from '../../styles/variables';
 import { Section } from '../layout/Section';
+import { GoBack } from '../utils/GoBack';
 import { Card } from './Card';
 
 export interface IBoardComponentProps {
@@ -10,20 +11,28 @@ export interface IBoardComponentProps {
 }
 
 export class BoardComponent extends React.Component<IBoardComponentProps> {
+    public static defaultProps: Partial<IBoardComponentProps> = {
+        size: "4"
+    };
     public render(): JSX.Element {
         const {className, size} = this.props;
         return  (
-            <Section className={className}>
-                <Card figure="tomster" value="3" size={size} />
-                <Card figure="tomster" value="3" size={size} />
-                <Card figure="tomster" value="3" size={size} />
-                <Card figure="tomster" value="3" size={size} />
-                <Card figure="tomster" value="3" size={size} />
-                <Card figure="tomster" value="3" size={size} />
-                <Card figure="tomster" value="3" size={size} />
-                <Card figure="tomster" value="3" size={size} />
-                <Card figure="tomster" value="3" size={size} />
-            </Section>
+            <>
+                <Section className={className}>
+                    <Card figure="tomster" value="3" size={size} />
+                    <Card figure="tomster" value="3" size={size} />
+                    <Card figure="tomster" value="3" size={size} />
+                    <Card figure="tomster" value="3" size={size} />
+                    <Card figure="tomster" value="3" size={size} />
+                    <Card figure="tomster" value="3" size={size} />
+                    <Card figure="tomster" value="3" size={size} />
+                    <Card figure="tomster" value="3" size={size} />
+                    <Card figure="tomster" value="3" size={size} />
+                </Section>
+                <Section>
+                    <GoBack />
+                </Section>
+            </>
         );
     }
 }
