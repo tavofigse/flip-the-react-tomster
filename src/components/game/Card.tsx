@@ -5,15 +5,16 @@ import * as Variables from '../../styles/variables';
 export interface IFlipCardProps {
     value: string;
     figure: string;
+    size: string;
     className?: string;
 }
 
 export class CardComponent extends React.Component<IFlipCardProps> {
     public render(): JSX.Element {
-        const {className, figure, value} = this.props;
+        const {className, figure, value, size} = this.props;
         return (
-            <div className={`${className} game-board-card-container game-board-size-4`}>
-                <div className="flip-card show animated">
+            <div className={`${className} game-board-card-container game-board-size-${size}`}>
+                <div className="flip-card veil animated">
                     <div className="flip-card-cover" />
                     <div className="flip-card-figure">
                         <div className={`figure-${figure}${value}`} />

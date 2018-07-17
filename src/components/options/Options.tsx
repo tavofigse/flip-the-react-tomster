@@ -72,5 +72,6 @@ export const OptionsComponent: React.StatelessComponent<IOptionsProps & Injected
 };
 
 export const Options = reduxForm({
+  destroyOnUnmount: false,
   form: FORM_NAME
 })(OptionsComponent)

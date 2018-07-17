@@ -4,20 +4,25 @@ import * as Variables from '../../styles/variables';
 import { Section } from '../layout/Section';
 import { Card } from './Card';
 
-interface IBoardComponentProps {
+export interface IBoardComponentProps {
     className?: string;
+    size: string;
 }
 
 export class BoardComponent extends React.Component<IBoardComponentProps> {
     public render(): JSX.Element {
-        const {className} = this.props;
+        const {className, size} = this.props;
         return  (
             <Section className={className}>
-                <Card figure="tomster" value="3"/>
-                <Card figure="tomster" value="3"/>
-                <Card figure="tomster" value="3"/>
-                <Card figure="tomster" value="3"/>
-                <Card figure="tomster" value="3"/>
+                <Card figure="tomster" value="3" size={size} />
+                <Card figure="tomster" value="3" size={size} />
+                <Card figure="tomster" value="3" size={size} />
+                <Card figure="tomster" value="3" size={size} />
+                <Card figure="tomster" value="3" size={size} />
+                <Card figure="tomster" value="3" size={size} />
+                <Card figure="tomster" value="3" size={size} />
+                <Card figure="tomster" value="3" size={size} />
+                <Card figure="tomster" value="3" size={size} />
             </Section>
         );
     }
