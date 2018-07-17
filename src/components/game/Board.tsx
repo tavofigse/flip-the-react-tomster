@@ -13,9 +13,11 @@ export class BoardComponent extends React.Component<IBoardComponentProps> {
         const {className} = this.props;
         return  (
             <Section className={className}>
-                <div className="game-board-card-container game-board-size-6">
-                    <Card figure="tomster" value="3"/>
-                </div>
+                <Card figure="tomster" value="3"/>
+                <Card figure="tomster" value="3"/>
+                <Card figure="tomster" value="3"/>
+                <Card figure="tomster" value="3"/>
+                <Card figure="tomster" value="3"/>
             </Section>
         );
     }
@@ -25,17 +27,17 @@ export const Board = styled(BoardComponent)`
 font-size: 1em;
 
 .game-board-size-4 {
-    flex: 0 0 25%;
+    flex: 0 0 22%;
     padding: ${Variables.rem(10)};
 }
 
 .game-board-size-6 {
-    flex: 0 0 16.6%;
+    flex: 0 0 14.6%;
     padding: ${Variables.rem(6)};
 }
 
 .game-board-size-8 {
-    flex: 0 0 12.5%;
+    flex: 0 0 10.5%;
     padding: ${Variables.rem(5)};
 }
 

@@ -12,7 +12,7 @@ export class CardComponent extends React.Component<IFlipCardProps> {
     public render(): JSX.Element {
         const {className, figure, value} = this.props;
         return (
-            <div className={className}>
+            <div className={`${className} game-board-card-container game-board-size-4`}>
                 <div className="flip-card show animated">
                     <div className="flip-card-cover" />
                     <div className="flip-card-figure">
