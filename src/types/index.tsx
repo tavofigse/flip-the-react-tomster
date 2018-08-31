@@ -1,8 +1,9 @@
+import { List } from 'immutable';
 import { FormStateMap } from "redux-form";
+import { ICard } from "../models/game/Card";
 
 export interface IGameState {
-    cards: string[];
-    matchs?: [string, string];
+    cards: List<ICard>;
 }
 
 export interface IStoreState {

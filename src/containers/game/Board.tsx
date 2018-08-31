@@ -1,27 +1,29 @@
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
 import { formValueSelector } from 'redux-form';
-import { Board as BoardComponent, IBoardComponentProps } from '../../components/game/Board';
+import { flipCard, GameActions, initialize } from '../../actions/game';
+import { Board as BoardComponent, IBoardComponentProps, IBoardHandlers } from '../../components/game/Board';
 import { FORM_NAME } from '../../components/options';
-import { figures, range, shuffle } from '../utils';
+import { IStoreState } from '../../types/index';
 
 const selector = formValueSelector(FORM_NAME);
-  
-function genereateCards(size: number, figure: string = "tomster"): string[] {
-    const amountOfCards = size * size / 2;
-    const amountOFFigures = figures[figure];
-    const cards = shuffle(range(1, amountOFFigures))
-        .slice(0, amountOfCards)
-        .map(n => String(n));
-    return [...cards].concat(cards);
-}
 
-const mapStateToProps: (state: any) => IBoardComponentProps =
-state => ({
-    cards: genereateCards(Number(selector(state, 'grid')) || 4, selector(state, 'character')),
-    figure: selector(state, 'character'),
-    size: selector(state, 'grid')
-})
+const mapStateToProps: (state: IStoreState) => IBoardComponentProps =
+    state => ({
+        cards: state.game.cards,
+        figure: selector(state, 'character'),
+        size: selector(state, 'grid')
+    })
+
+const mapDispatchToProps: (dispatch: Dispatch<GameActions>) => IBoardHandlers =
+    dispatch => ({
+        flipCard: (cardId: string) => dispatch(flipCard(cardId)),
+        initializeBoard: (
+            size: string,
+            figure: string
+        ) => dispatch(initialize(size, figure))
+    })
 
 export const Board = connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(BoardComponent)

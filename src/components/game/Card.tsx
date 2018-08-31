@@ -3,29 +3,20 @@ import styled from 'styled-components';
 import * as Variables from '../../styles/variables';
 
 export interface IFlipCardProps {
-    value: string;
+    cardId: string;
     figure: string;
-    size: string;
+    size: number;
     className?: string;
-}
-
-export interface IFlipCardState {
+    flipCard: (cardId: string) => void;
     show: boolean;
 }
 
-export class CardComponent extends React.Component<IFlipCardProps, IFlipCardState> {
+export class CardComponent extends React.Component<IFlipCardProps> {
     public static defaultProps: Partial<IFlipCardProps> = {
         figure: "tomster",
     };
-    constructor(props: IFlipCardProps) {
-        super(props);
-        this.state = {
-            show: false
-        }
-    }
     public render(): JSX.Element {
-        const {className, figure, value, size} = this.props;
-        const {show} = this.state;
+        const {className, figure, cardId, size, show} = this.props;
         return (
             <div onClick={this.handleChange} 
                  className={`${className} game-board-card-container game-board-size-${size}`}
@@ -33,18 +24,16 @@ export class CardComponent extends React.Component<IFlipCardProps, IFlipCardStat
                 <div className={`flip-card ${show ? "show": "veil"} animated`}>
                     <div className="flip-card-cover" />
                     <div className="flip-card-figure">
-                        <div className={`figure-${figure}${value}`} />
+                        <div className={`figure-${figure}${cardId}`} />
                     </div>
                 </div>
             </div>
         );
     }
-    private handleChange: (e: React.MouseEvent<HTMLDivElement>) => void =
-    (e) => {
-        console.log("ADASDASDSD");
-        this.setState({
-            show: !this.state.show
-        })
+    private handleChange: (event: React.MouseEvent<HTMLDivElement>) => void =
+    (event) => {
+        event.preventDefault();
+        this.props.flipCard(this.props.cardId);
     }
 }
 

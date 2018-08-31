@@ -1,16 +1,18 @@
+import { List, Range } from 'immutable';
+
 export const figures = {
     dog: 32,
     tomster: 48
 }
 
-export function range(min: number, max: number): number[] {
-    return [...Array.from(Array(max - min + 1).keys())].map(n => n + min);
+export function range(min: number, max: number): List<number> {
+    return List(Range(min, max));
 }
 
-export function shuffle(array: number[]): number[] {
+export function shuffle(array: List<number>): List<number> {
     let tmp;
     let current;
-    let top = array.length;
+    let top = array.size;
   
     if(top) {
       while(--top) {

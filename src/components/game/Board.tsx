@@ -1,5 +1,7 @@
+import { List } from 'immutable';
 import * as React from 'react';
 import styled from 'styled-components';
+import { ICard } from '../../models/game/Card';
 import * as Variables from '../../styles/variables';
 import { Section } from '../layout/Section';
 import { GoBack } from '../utils/GoBack';
@@ -8,28 +10,33 @@ import { Card } from './Card';
 export interface IBoardComponentProps {
     className?: string;
     size: string;
-    cards: string[];
+    cards: List<ICard>;
     figure: string;
 }
 
-export class BoardComponent extends React.Component<IBoardComponentProps> {
-    public static defaultProps: Partial<IBoardComponentProps> = {
+export interface IBoardHandlers {
+    flipCard: (cardId: string) => void;
+    initializeBoard: (size: string, figure: string) => void;
+}
+
+type BoardProps = IBoardComponentProps & IBoardHandlers;
+
+export class BoardComponent extends React.Component<BoardProps> {
+    public static defaultProps: Partial<BoardProps> = {
         size: "4"
     };
+    public componentWillMount(): void {
+        this.props.initializeBoard(
+            this.props.size, 
+            this.props.figure
+        );
+    }
     public render(): JSX.Element {
-        const {className, size, cards, figure} = this.props;
-        debugger;
+        const {className, cards} = this.props;
         return  (
             <>
                 <Section className={className}>
-                    {cards.map((value, index) =>
-                        <Card
-                            key={index}
-                            figure={figure}
-                            value={value}
-                            size={size}
-                        />
-                    )}
+                    {cards.map(this.renderCard)}
                 </Section>
                 <Section>
                     <GoBack />
@@ -37,6 +44,16 @@ export class BoardComponent extends React.Component<IBoardComponentProps> {
             </>
         );
     }
+    private renderCard: (card: ICard, index: number) => JSX.Element =
+    (card, index) => 
+        <Card
+            key={index}
+            figure={card.figure}
+            cardId={card.cardId}
+            size={card.size}
+            flipCard={this.props.flipCard}
+            show={card.show}
+        />
 }
 
 export const Board = styled(BoardComponent)`
