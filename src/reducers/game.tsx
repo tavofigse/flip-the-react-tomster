@@ -1,15 +1,11 @@
 import { List } from 'immutable';
-import { formValueSelector } from 'redux-form';
 import { GameActions } from "../actions/game";
-import { FORM_NAME } from "../components/options";
 import { FLIP_CARD, INITIALIZE } from "../constants/game";
 import { ICard } from '../models/game/Card';
 import { IGameState } from "../types/index"
 import { genereateCards } from './utils';
 
 export const PAIR = 2;
-
-const selector = formValueSelector(FORM_NAME);
 
 export const gameReducer = (
     state: IGameState = {cards: List<ICard>()},
@@ -20,7 +16,7 @@ export const gameReducer = (
             return {
                 cards: genereateCards(
                     Number(action.size) || 4,
-                    selector(action.figure, 'character')
+                    action.figure
                 ),
             };
         }

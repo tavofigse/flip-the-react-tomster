@@ -19,12 +19,9 @@ export interface IBoardHandlers {
     initializeBoard: (size: string, figure: string) => void;
 }
 
-type BoardProps = IBoardComponentProps & IBoardHandlers;
+export type BoardProps = IBoardComponentProps & IBoardHandlers;
 
 export class BoardComponent extends React.Component<BoardProps> {
-    public static defaultProps: Partial<BoardProps> = {
-        size: "4"
-    };
     public componentWillMount(): void {
         this.props.initializeBoard(
             this.props.size, 
