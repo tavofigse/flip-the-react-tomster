@@ -45,7 +45,7 @@ export class BoardComponent extends React.Component<BoardProps> {
     (card, index) => 
         <Card
             key={index}
-            boardPosition={index}
+            boardPosition={card.boardPosition}
             figure={card.figure}
             cardId={card.cardId}
             size={card.size}
