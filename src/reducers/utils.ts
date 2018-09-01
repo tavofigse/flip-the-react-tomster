@@ -5,7 +5,7 @@ import { ICard } from '../models/game/Card';
 export function genereateCards(size: number, figure: string = "tomster"): List<ICard> {
     const amountOfCards = size * size / 2;
     const amountOfFigures = figures[figure];
-    const cards = shuffle<number>(range(1, amountOfFigures))
+    const cards = shuffle(range(1, amountOfFigures))
         .slice(0, amountOfCards)
         .map((ran: number, i: number) => ({
             boardPosition: i,
@@ -14,7 +14,7 @@ export function genereateCards(size: number, figure: string = "tomster"): List<I
             show: false,
             size
         }))
-    return shuffle<ICard>(cards.concat(cards.map(
+    return shuffle(cards.concat(cards.map(
         (card: ICard) => ({...card, boardPosition: card.boardPosition + amountOfCards})
     )).toList());
 }
