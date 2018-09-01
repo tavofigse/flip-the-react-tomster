@@ -22,7 +22,7 @@ export const gameReducer = (
         }
         case FLIP_CARD: {
             const selectedCard = state.cards.findIndex(
-                (card: ICard) => card.cardId === action.cardId
+                (card: ICard) => card.boardPosition === action.boardPosition
             );
             const newCards = state.cards
                 .update(

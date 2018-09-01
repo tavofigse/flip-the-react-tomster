@@ -15,7 +15,7 @@ export interface IBoardComponentProps {
 }
 
 export interface IBoardHandlers {
-    flipCard: (cardId: string) => void;
+    flipCard: (boardPosition: number) => void;
     initializeBoard: (size: string, figure: string) => void;
 }
 
@@ -45,6 +45,7 @@ export class BoardComponent extends React.Component<BoardProps> {
     (card, index) => 
         <Card
             key={index}
+            boardPosition={index}
             figure={card.figure}
             cardId={card.cardId}
             size={card.size}

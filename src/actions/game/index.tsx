@@ -3,7 +3,7 @@ import * as constants from '../../constants/game'
 
 // action
 export interface IFlipCard extends Action {
-    cardId: string;
+    boardPosition: number;
     type: constants.FLIP_CARD;
 }
 
@@ -25,9 +25,9 @@ export function initialize(size: string, figure: string): Initialize {
     }
 }
 
-export function flipCard(cardId: string): IFlipCard {
+export function flipCard(boardPosition: number): IFlipCard {
     return {
-        cardId,
+        boardPosition,
         type: constants.FLIP_CARD
     }
 }

@@ -3,4 +3,5 @@ export interface ICard {
     show: boolean;
     figure: string;   
     size: number;
+    boardPosition: number;
 }

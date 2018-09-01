@@ -10,19 +10,6 @@ export function range(min: number, max: number): List<number> {
 }
 
 export function shuffle(array: List<number>): List<number> {
-    let tmp;
-    let current;
-    let top = array.size;
-  
-    if(top) {
-      while(--top) {
-        current = Math.floor(Math.random() * (top + 1));
-        tmp = array[current];
-        array[current] = array[top];
-        array[top] = tmp;
-      }
-    }
-  
-    return array;
+    return array.sortBy(Math.random).toList();
   }
   

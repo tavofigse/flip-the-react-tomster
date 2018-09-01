@@ -16,7 +16,7 @@ const mapStateToProps: (state: IStoreState) => IBoardComponentProps =
 
 const mapDispatchToProps: (dispatch: Dispatch<GameActions>) => IBoardHandlers =
     dispatch => ({
-        flipCard: (cardId: string) => dispatch(flipCard(cardId)),
+        flipCard: (boardPosition: number) => dispatch(flipCard(boardPosition)),
         initializeBoard: (
             size: string,
             figure: string
