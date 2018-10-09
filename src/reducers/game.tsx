@@ -8,12 +8,13 @@ import { genereateCards } from './utils';
 export const PAIR = 2;
 
 export const gameReducer = (
-    state: IGameState = {cards: List<ICard>()},
+    state: IGameState = {cards: List<ICard>(), prevCard: null},
     action: GameActions
 ) => {
     switch (action.type) {
         case INITIALIZE: {
             return {
+                ...state,
                 cards: genereateCards(
                     Number(action.size) || 4,
                     action.figure
@@ -30,6 +31,7 @@ export const gameReducer = (
                     value => ({...value, show: !value.show})
                 )
             return {
+                ...state,
                 cards: newCards
             };
         }
