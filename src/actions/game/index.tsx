@@ -1,5 +1,7 @@
 import { Action } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 import * as constants from '../../constants/game'
+import { IStoreState } from '../../types';
 
 // action
 export interface IFlipCard extends Action {
@@ -25,9 +27,12 @@ export function initialize(size: string, figure: string): Initialize {
     }
 }
 
-export function flipCard(boardPosition: number): IFlipCard {
-    return {
-        boardPosition,
-        type: constants.FLIP_CARD
+// types
+export type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, GameActions>;
+
+export function flipCard(boardPosition: number): ThunkResult<void> {
+    return async (dispatch, getState) => {
+        console.log(boardPosition);
+        return;
     }
 }

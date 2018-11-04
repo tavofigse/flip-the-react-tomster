@@ -1,6 +1,6 @@
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { formValueSelector } from 'redux-form';
-import { flipCard, GameActions, initialize } from '../../actions/game';
+import { flipCard, initialize } from '../../actions/game';
 import { Board as BoardComponent, IBoardComponentProps, IBoardHandlers } from '../../components/game/Board';
 import { FORM_NAME } from '../../components/options';
 import { IStoreState } from '../../types/index';
@@ -14,7 +14,7 @@ const mapStateToProps: (state: IStoreState) => IBoardComponentProps =
         size: selector(state, 'grid')
     })
 
-const mapDispatchToProps: (dispatch: Dispatch<GameActions>) => IBoardHandlers =
+const mapDispatchToProps: (dispatch: any) => IBoardHandlers =
     dispatch => ({
         flipCard: (boardPosition: number) => dispatch(flipCard(boardPosition)),
         initializeBoard: (

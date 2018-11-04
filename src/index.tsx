@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {applyMiddleware, combineReducers, createStore } from 'redux';
 import { reducer as formReducer } from 'redux-form'
+import ReduxThunk from 'redux-thunk';
 import { injectGlobal } from 'styled-components';
 import { App } from './components/App';
 import { gameReducer } from './reducers/game';
@@ -16,7 +17,7 @@ const rootReducer = combineReducers<IStoreState>({
 })
 
 // middlewares
-const middlewares = [];
+const middlewares = [ReduxThunk];
 
 if (process.env.NODE_ENV === `development`) {
   // tslint:disable-next-line
