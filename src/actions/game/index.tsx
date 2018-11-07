@@ -30,9 +30,9 @@ export function initialize(size: string, figure: string): Initialize {
 // types
 export type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, GameActions>;
 
-export function flipCard(boardPosition: number): ThunkResult<void> {
-    return async (dispatch, getState) => {
-        console.log(boardPosition);
+export const flipCard = (boardPosition: number): ThunkResult<void> =>
+    async (dispatch, getState) => {
+        const { game } = getState();
+        console.log(game);
         return;
     }
-}

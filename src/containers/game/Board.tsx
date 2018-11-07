@@ -14,14 +14,15 @@ const mapStateToProps: (state: IStoreState) => IBoardComponentProps =
         size: selector(state, 'grid')
     })
 
-const mapDispatchToProps: (dispatch: any) => IBoardHandlers =
-    dispatch => ({
-        flipCard: (boardPosition: number) => dispatch(flipCard(boardPosition)),
-        initializeBoard: (
-            size: string,
-            figure: string
-        ) => dispatch(initialize(size, figure))
-    })
+const mapDispatchToProps = (
+    dispatch: any
+): IBoardHandlers => ({
+    flipCard: (boardPosition: number) => dispatch(flipCard(boardPosition)),
+    initializeBoard: (
+        size: string,
+        figure: string
+    ) => dispatch(initialize(size, figure))
+})
 
 export const Board = connect(
     mapStateToProps,
