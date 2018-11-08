@@ -3,7 +3,8 @@ import { GameActions } from "../actions/game";
 import {
     ADD_PREV_CARD,
     FLIP_CARD,
-    INITIALIZE
+    INITIALIZE,
+    REMOVE_PREV_CARD
 } from "../constants/game";
 import { ICard } from '../models/game/Card';
 import { IGameState } from "../types/index"
@@ -39,6 +40,13 @@ export const gameReducer = (
             return {
                 ...state,
                 prevCard: action.prevCard,
+            }
+        }
+
+        case REMOVE_PREV_CARD: {
+            return {
+                ...state,
+                prevCard: null,
             }
         }
 

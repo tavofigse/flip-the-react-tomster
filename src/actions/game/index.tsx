@@ -21,8 +21,12 @@ export interface IAddPrevCard extends Action {
     type: constants.ADD_PREV_CARD;
 }
 
+export interface IRemovePrevCard extends Action {
+    type: constants.REMOVE_PREV_CARD
+}
+
 // Action Types
-export type GameActions = Initialize | IFlipCard | IAddPrevCard;
+export type GameActions = Initialize | IFlipCard | IAddPrevCard | IRemovePrevCard;
 
 // Thunk type
 export type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, GameActions>;
@@ -44,15 +48,36 @@ export const addPrevCard = (prevCard: ICard): IAddPrevCard => ({
     type: constants.ADD_PREV_CARD
 })
 
+export const removePrevCard = (): IRemovePrevCard => ({
+    type: constants.REMOVE_PREV_CARD
+})
+
 // Thunks
 export const checkCard = (boardPosition: number): ThunkResult<void> =>
     async (dispatch, getState) => {
         const state = getState();
         const { game: { prevCard } } = state;
+        let selectedCard = state.game.cards.find(
+            (card: ICard) => card.boardPosition === boardPosition
+        );
+
         if (prevCard) {
-            dispatch(flipCard(boardPosition));
+            // prevCard is equal to selectedCard.
+            if ( prevCard.boardPosition === selectedCard.boardPosition) {
+                return;
+            }
+            dispatch(flipCard(selectedCard.boardPosition));
+            if (selectedCard.cardId === prevCard.cardId) {
+                console.log("ES LA MISMA!!!");
+            } else {
+                setTimeout(() => {
+                    dispatch(flipCard(selectedCard.boardPosition));
+                    dispatch(flipCard(prevCard.boardPosition));
+                    dispatch(removePrevCard());
+                }, 800)
+            }
         } else {
-            const selectedCard = state.game.cards.find(
+            selectedCard = state.game.cards.find(
                 (card: ICard) => card.boardPosition === boardPosition
             );
             dispatch(flipCard(boardPosition));
