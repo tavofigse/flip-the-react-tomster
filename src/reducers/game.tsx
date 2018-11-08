@@ -1,6 +1,10 @@
 import { List } from 'immutable';
 import { GameActions } from "../actions/game";
-import { FLIP_CARD, INITIALIZE } from "../constants/game";
+import {
+    ADD_PREV_CARD,
+    FLIP_CARD,
+    INITIALIZE
+} from "../constants/game";
 import { ICard } from '../models/game/Card';
 import { IGameState } from "../types/index"
 import { genereateCards } from './utils';
@@ -10,7 +14,7 @@ export const PAIR = 2;
 export const gameReducer = (
     state: IGameState = {cards: List<ICard>(), prevCard: null},
     action: GameActions
-) => {
+): IGameState => {
     switch (action.type) {
         case INITIALIZE: {
             return {
@@ -30,6 +34,14 @@ export const gameReducer = (
                   )
             };
         }
+
+        case ADD_PREV_CARD: {
+            return {
+                ...state,
+                prevCard: action.prevCard,
+            }
+        }
+
         default:
             return state;
     }
