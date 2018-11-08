@@ -27,12 +27,15 @@ export function initialize(size: string, figure: string): Initialize {
     }
 }
 
+export const flipCard = (boardPosition: number): IFlipCard => ({
+    boardPosition,
+    type: constants.FLIP_CARD
+})
+
 // types
 export type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, GameActions>;
 
-export const flipCard = (boardPosition: number): ThunkResult<void> =>
+export const checkCard = (boardPosition: number): ThunkResult<void> =>
     async (dispatch, getState) => {
-        const { game } = getState();
-        console.log(game);
-        return;
+        dispatch(flipCard(boardPosition))
     }

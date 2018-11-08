@@ -22,17 +22,12 @@ export const gameReducer = (
             };
         }
         case FLIP_CARD: {
-            const selectedCard = state.cards.findIndex(
-                (card: ICard) => card.boardPosition === action.boardPosition
-            );
-            const newCards = state.cards
-                .update(
-                    selectedCard,
-                    value => ({...value, show: !value.show})
-                )
             return {
                 ...state,
-                cards: newCards
+                cards: state.cards.update(
+                    state.cards.findIndex((card: ICard) => card.boardPosition === action.boardPosition),
+                    card => ({...card, show: !card.show})
+                  )
             };
         }
         default:

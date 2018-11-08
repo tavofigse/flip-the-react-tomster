@@ -7,7 +7,7 @@ export interface IFlipCardProps {
     figure: string;
     size: number;
     className?: string;
-    flipCard: (boardPosition: number) => void;
+    checkCard: (boardPosition: number) => void;
     show: boolean;
     boardPosition: number;
 }
@@ -35,7 +35,7 @@ export class CardComponent extends React.Component<IFlipCardProps> {
     private handleChange: (event: React.MouseEvent<HTMLDivElement>) => void =
     (event) => {
         event.preventDefault();
-        this.props.flipCard(this.props.boardPosition);
+        this.props.checkCard(this.props.boardPosition);
     }
 }
 
