@@ -25,6 +25,7 @@ export const GoBack = styled(withRouter(GoBackComponent))`
     ${Variables.headingFont(35)}
     ${Variables.textShadowEffect()}
 
+    cursor: pointer;
     &:hover {
       color: ${Variables.COLOR_AQUA};
     }

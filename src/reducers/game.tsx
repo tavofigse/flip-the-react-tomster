@@ -1,5 +1,6 @@
 import { GameActions } from "../actions/game";
 import {
+    ADD_MATCH,
     ADD_PREV_CARD,
     FLIP_CARD,
     INITIALIZE,
@@ -18,12 +19,12 @@ export const gameReducer = (
     switch (action.type) {
         case INITIALIZE: {
             return {
-                ...state,
+                ...InitialGameState,
                 cards: genereateCards(
                     Number(action.size) || 4,
                     action.figure
-                ),
-            };
+                )
+            }
         }
         case FLIP_CARD: {
             return {
@@ -46,6 +47,13 @@ export const gameReducer = (
             return {
                 ...state,
                 prevCard: null,
+            }
+        }
+
+        case ADD_MATCH: {
+            return {
+                ...state,
+                matches: state.matches.concat(action.matches).toList()
             }
         }
 

@@ -1,3 +1,4 @@
+import { List } from 'immutable';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import * as constants from '../../constants/game'
@@ -22,11 +23,17 @@ export interface IAddPrevCard extends Action {
 }
 
 export interface IRemovePrevCard extends Action {
-    type: constants.REMOVE_PREV_CARD
+    type: constants.REMOVE_PREV_CARD;
+}
+
+export interface IAddMatch extends Action {
+    type: constants.ADD_MATCH;
+    matches: List<ICard>;
 }
 
 // Action Types
-export type GameActions = Initialize | IFlipCard | IAddPrevCard | IRemovePrevCard;
+export type GameActions =
+    Initialize | IFlipCard | IAddPrevCard | IRemovePrevCard | IAddMatch;
 
 // Thunk type
 export type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, GameActions>;
@@ -52,23 +59,40 @@ export const removePrevCard = (): IRemovePrevCard => ({
     type: constants.REMOVE_PREV_CARD
 })
 
+export const addMatch = (matches: List<ICard>): IAddMatch => ({
+    matches,
+    type: constants.ADD_MATCH
+})
+
 // Thunks
 export const checkCard = (boardPosition: number): ThunkResult<void> =>
     async (dispatch, getState) => {
         const state = getState();
-        const { game: { prevCard } } = state;
+        const { game: { prevCard, matches } } = state;
+
         let selectedCard = state.game.cards.find(
             (card: ICard) => card.boardPosition === boardPosition
         );
+
+        // if the selected card it's already in matches return.
+        if (matches.size > 0 && matches.find((card: ICard) => card.boardPosition === selectedCard.boardPosition)) {
+            console.log("ENTRO");
+            return;
+        }
+
         if (prevCard) {
-            // prevCard is equal to selectedCard.
-            if ( prevCard.boardPosition === selectedCard.boardPosition) {
+            // prevCard is equal to selectedCard. return.
+            if (prevCard.boardPosition === selectedCard.boardPosition) {
                 return;
             }
+
+            // flip selected card
             dispatch(flipCard(selectedCard.boardPosition));
+
             if (selectedCard.cardId === prevCard.cardId) {
                 // is a match
-                console.log("ES LA MISMA!!!");
+                dispatch(addMatch(List([selectedCard, prevCard])));
+                dispatch(removePrevCard());
             } else {
                 // is not a match
                 setTimeout(() => {
