@@ -27,7 +27,7 @@ And then visit [http://localhost:3000](http://localhost:3000).
 
 ## Production build
 ```sh
-$ npm run build
+$ yarn build
 ```
 
 ## License
