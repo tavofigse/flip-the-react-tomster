@@ -60,7 +60,6 @@ export const checkCard = (boardPosition: number): ThunkResult<void> =>
         let selectedCard = state.game.cards.find(
             (card: ICard) => card.boardPosition === boardPosition
         );
-
         if (prevCard) {
             // prevCard is equal to selectedCard.
             if ( prevCard.boardPosition === selectedCard.boardPosition) {
@@ -68,8 +67,10 @@ export const checkCard = (boardPosition: number): ThunkResult<void> =>
             }
             dispatch(flipCard(selectedCard.boardPosition));
             if (selectedCard.cardId === prevCard.cardId) {
+                // is a match
                 console.log("ES LA MISMA!!!");
             } else {
+                // is not a match
                 setTimeout(() => {
                     dispatch(flipCard(selectedCard.boardPosition));
                     dispatch(flipCard(prevCard.boardPosition));
