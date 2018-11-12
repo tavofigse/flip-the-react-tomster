@@ -67,25 +67,18 @@ export const addMatch = (matches: List<ICard>): IAddMatch => ({
 // Thunks
 export const checkCard = (boardPosition: number): ThunkResult<void> =>
     async (dispatch, getState) => {
-        const state = getState();
-        const { game: { prevCard, matches } } = state;
+        const { game: { prevCard, cards } } = getState();
 
-        let selectedCard = state.game.cards.find(
+        const selectedCard = cards.find(
             (card: ICard) => card.boardPosition === boardPosition
         );
 
-        // if the selected card it's already in matches return.
-        if (matches.size > 0 && matches.find((card: ICard) => card.boardPosition === selectedCard.boardPosition)) {
-            console.log("ENTRO");
+        // prevCard is equal to selectedCard. return.
+        if (selectedCard.show) {
             return;
         }
 
         if (prevCard) {
-            // prevCard is equal to selectedCard. return.
-            if (prevCard.boardPosition === selectedCard.boardPosition) {
-                return;
-            }
-
             // flip selected card
             dispatch(flipCard(selectedCard.boardPosition));
 
@@ -95,16 +88,13 @@ export const checkCard = (boardPosition: number): ThunkResult<void> =>
                 dispatch(removePrevCard());
             } else {
                 // is not a match
+                dispatch(removePrevCard());
                 setTimeout(() => {
                     dispatch(flipCard(selectedCard.boardPosition));
                     dispatch(flipCard(prevCard.boardPosition));
-                    dispatch(removePrevCard());
                 }, 800)
             }
         } else {
-            selectedCard = state.game.cards.find(
-                (card: ICard) => card.boardPosition === boardPosition
-            );
             dispatch(flipCard(boardPosition));
             dispatch(addPrevCard(selectedCard));
         }
