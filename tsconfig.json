@@ -18,7 +18,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "paths": {
-      "react-sizeme": ["./typings/react-sizeme/"],
       "react-confetti": ["./typings/react-confetti/"]
     }
   },

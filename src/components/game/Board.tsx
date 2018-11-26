@@ -34,7 +34,7 @@ export class BoardComponent extends React.Component<BoardProps> {
         const {className, cards, gameEnded} = this.props;
         return  (
             <>
-                {gameEnded && <ConfettiRain />}
+                {!gameEnded &&  <ConfettiRain />}
                 <Section className={className}>
                     {cards.map(this.renderCard)}
                 </Section>
