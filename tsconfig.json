@@ -16,7 +16,11 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "paths": {
+      "react-sizeme": ["./typings/react-sizeme/"],
+      "react-confetti": ["./typings/react-confetti/"]
+    }
   },
   "exclude": [
     "node_modules",

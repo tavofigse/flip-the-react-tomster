@@ -6,12 +6,14 @@ import * as Variables from '../../styles/variables';
 import { Section } from '../layout/Section';
 import { GoBack } from '../utils/GoBack';
 import { Card } from './Card';
+import { ConfettiRain } from './Confetti';
 
 export interface IBoardComponentProps {
     className?: string;
     size: string;
     cards: List<ICard>;
     figure: string;
+    gameEnded: boolean;
 }
 
 export interface IBoardHandlers {
@@ -29,9 +31,10 @@ export class BoardComponent extends React.Component<BoardProps> {
         );
     }
     public render(): JSX.Element {
-        const {className, cards} = this.props;
+        const {className, cards, gameEnded} = this.props;
         return  (
             <>
+                {gameEnded && <ConfettiRain />}
                 <Section className={className}>
                     {cards.map(this.renderCard)}
                 </Section>

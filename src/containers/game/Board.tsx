@@ -17,6 +17,7 @@ const mapStateToProps: (
     state => ({
         cards: state.game.cards,
         figure: selector(state, 'character'),
+        gameEnded: state.game.gameEnded,
         size: selector(state, 'grid')
     })
 

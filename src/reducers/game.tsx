@@ -51,9 +51,17 @@ export const gameReducer = (
         }
 
         case ADD_MATCH: {
+            const newMatches = state.matches.concat(action.matches).toList();
+            if (newMatches.size === state.cards.size) {
+                return {
+                    ...state,
+                    gameEnded: true,
+                    matches: newMatches
+                }
+            }
             return {
                 ...state,
-                matches: state.matches.concat(action.matches).toList()
+                matches: newMatches
             }
         }
 
